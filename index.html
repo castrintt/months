@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>6 Meses de Nós ❤️</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Nunito:wght@400;700&display=swap');
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Nunito', sans-serif;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            color: #fff;
+        }
+
+        .container {
+            text-align: center;
+            z-index: 10;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            max-width: 90%;
+            width: 500px;
+        }
+
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            color: #d6336c;
+        }
+
+        p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: #a61e4d;
+        }
+
+        /* Carousel Styles */
+        .carousel {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            background-color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .carousel-inner {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .carousel-item {
+            min-width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #ffe3e3;
+            color: #d6336c;
+            font-size: 1.5rem;
+        }
+
+        .carousel-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .carousel-control {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.5);
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            color: #d6336c;
+            transition: background 0.3s;
+        }
+
+        .carousel-control:hover {
+            background: rgba(255, 255, 255, 0.8);
+        }
+
+        .prev { left: 10px; }
+        .next { right: 10px; }
+
+        /* Floating Hearts Animation */
+        .hearts {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .heart {
+            position: absolute;
+            bottom: -100px;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.5);
+            transform: rotate(45deg);
+            animation: floatUp 10s linear infinite;
+        }
+
+        .heart::before, .heart::after {
+            content: "";
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background: inherit;
+            border-radius: 50%;
+        }
+
+        .heart::before { top: -20px; left: 0; }
+        .heart::after { top: 0; left: -20px; }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0) rotate(45deg) scale(0.5);
+                opacity: 0;
+            }
+            20% { opacity: 1; }
+            100% {
+                transform: translateY(-120vh) rotate(45deg) scale(1);
+                opacity: 0;
+            }
+        }
+
+        /* Button */
+        .btn-love {
+            margin-top: 2rem;
+            padding: 10px 30px;
+            background-color: #d6336c;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            font-family: 'Nunito', sans-serif;
+            font-weight: bold;
+        }
+
+        .btn-love:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(214, 51, 108, 0.4);
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="hearts" id="hearts-container"></div>
+
+    <div class="container">
+        <h1>Feliz 6 Meses! ❤️</h1>
+        <p>Cada momento ao seu lado é um presente. Te amo!</p>
+
+        <div class="carousel">
+            <div class="carousel-inner" id="carousel-inner">
+                <!-- Substitua estes itens pelas suas fotos -->
+                <!-- Exemplo: <div class="carousel-item"><img src="foto1.jpg" alt="Nós"></div> -->
+                <div class="carousel-item">Foto 1 (Insira sua imagem)</div>
+                <div class="carousel-item">Foto 2 (Insira sua imagem)</div>
+                <div class="carousel-item">Foto 3 (Insira sua imagem)</div>
+            </div>
+            <button class="carousel-control prev" onclick="moveSlide(-1)">&#10094;</button>
+            <button class="carousel-control next" onclick="moveSlide(1)">&#10095;</button>
+        </div>
+
+        <button class="btn-love" onclick="alert('Eu te amo muito! ❤️')">Clique aqui</button>
+    </div>
+
+    <script>
+        // Carousel Logic
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.carousel-item');
+        const totalSlides = slides.length;
+        const carouselInner = document.getElementById('carousel-inner');
+
+        function moveSlide(direction) {
+            currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
+            const offset = -currentSlide * 100;
+            carouselInner.style.transform = `translateX(${offset}%)`;
+        }
+
+        // Auto play carousel
+        setInterval(() => {
+            moveSlide(1);
+        }, 3000);
+
+        // Generate Floating Hearts
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 3 + 7 + 's'; // 7-10s
+            heart.style.opacity = Math.random() * 0.5 + 0.3;
+            heart.style.width = Math.random() * 20 + 20 + 'px';
+            heart.style.height = heart.style.width;
+
+            // Adjust pseudo-elements size based on heart size
+            // Since we can't easily change pseudo-elements via JS inline styles without CSS variables,
+            // we'll stick to a standard size or use CSS variables if needed.
+            // For simplicity, let's keep size variation small or use scale.
+            const scale = Math.random() * 0.5 + 0.5;
+            heart.style.transform = `rotate(45deg) scale(${scale})`;
+
+            // Fix animation keyframes overriding transform
+            // Actually, the animation overrides the transform property.
+            // Better to set a CSS variable for scale or just let the animation handle scale.
+            // Let's just randomize left and duration.
+
+            document.getElementById('hearts-container').appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 10000);
+        }
+
+        setInterval(createHeart, 300);
+    </script>
+</body>
+</html>

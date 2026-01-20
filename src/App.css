@@ -1,0 +1,428 @@
+/* App.css */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=IM+Fell+English+SC&family=MedievalSharp&display=swap');
+
+.App {
+  text-align: center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
+  color: #fff;
+  overflow: hidden;
+  position: relative;
+}
+
+.container {
+  z-index: 10;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  max-width: 90%;
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1 {
+  font-family: 'Dancing Script', cursive;
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+  color: #d6336c;
+}
+
+p {
+  font-family: 'Nunito', sans-serif;
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  color: #a61e4d;
+}
+
+/* Carousel Styles */
+.carousel {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel-inner {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.carousel-item {
+  min-width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffe3e3;
+  color: #d6336c;
+  font-size: 1.5rem;
+  font-family: 'Nunito', sans-serif;
+  padding: 0;
+}
+
+.carousel-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Alterado para contain para mostrar a imagem inteira */
+  display: block;
+}
+
+.carousel-control {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.5);
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: #d6336c;
+  transition: background 0.3s;
+  z-index: 2;
+}
+
+.carousel-control:hover {
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.prev { left: 10px; }
+.next { right: 10px; }
+
+/* Floating Hearts Animation */
+.hearts {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.heart {
+  position: absolute;
+  bottom: -100px;
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.5);
+  transform: rotate(45deg);
+  animation: floatUp 10s linear infinite;
+}
+
+.heart::before, .heart::after {
+  content: "";
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background: inherit;
+  border-radius: 50%;
+}
+
+.heart::before { top: -20px; left: 0; }
+.heart::after { top: 0; left: -20px; }
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(0) rotate(45deg) scale(0.5);
+    opacity: 0;
+  }
+  20% { opacity: 1; }
+  100% {
+    transform: translateY(-120vh) rotate(45deg) scale(1);
+    opacity: 0;
+  }
+}
+
+/* Button */
+.btn-love {
+  margin-top: 2rem;
+  padding: 10px 30px;
+  background-color: #d6336c;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  font-family: 'Nunito', sans-serif;
+  font-weight: bold;
+}
+
+.btn-love:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(214, 51, 108, 0.4);
+}
+
+/* --- BOOK STYLES --- */
+.book-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #2c3e50;
+  perspective: 2000px;
+  overflow: hidden;
+  font-family: 'MedievalSharp', cursive;
+}
+
+.scroll-hint {
+  position: absolute;
+  top: 20px;
+  color: #fff;
+  text-align: center;
+  animation: bounce 2s infinite;
+  z-index: 100;
+}
+
+.scroll-hint p {
+  margin: 0;
+  font-size: 1.2rem;
+  color: #f1c40f;
+  text-shadow: 1px 1px 2px #000;
+}
+
+.arrow-down {
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid #f1c40f;
+  margin: 10px auto;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+  40% {transform: translateY(-10px);}
+  60% {transform: translateY(-5px);}
+}
+
+/* Container flutuante para o livro e sombra */
+.book-floater {
+  position: relative;
+  width: 40vw;
+  height: 80vh;
+  animation: floatBook 6s ease-in-out infinite;
+}
+
+@keyframes floatBook {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+/* O Livro */
+.book {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 1s;
+}
+
+.book.open {
+  transform: translateX(20vw);
+}
+
+/* Sombra do Livro */
+.book-shadow {
+  position: absolute;
+  bottom: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 20px;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  filter: blur(10px);
+  animation: shadowScale 6s ease-in-out infinite;
+  z-index: -1;
+}
+
+@keyframes shadowScale {
+  0%, 100% { transform: translateX(-50%) scale(1); opacity: 0.5; }
+  50% { transform: translateX(-50%) scale(0.8); opacity: 0.3; }
+}
+
+/* Folhas (Sheets) */
+.sheet {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  transform-origin: left center;
+  transition: transform 1.5s cubic-bezier(0.645, 0.045, 0.355, 1);
+  transform-style: preserve-3d;
+}
+
+.sheet.flipped {
+  transform: rotateY(-180deg);
+}
+
+/* Faces da folha */
+.front, .back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  background-color: #f4e4bc;
+  box-shadow: inset 0 0 30px rgba(0,0,0,0.1);
+}
+
+.front {
+  z-index: 2;
+  border-radius: 0 15px 15px 0;
+  transform: translateZ(0.5px); /* Evita z-fighting */
+}
+
+.back {
+  transform: rotateY(180deg) translateZ(0.5px); /* Evita z-fighting */
+  z-index: 1;
+  border-radius: 15px 0 0 15px;
+  background-color: #eaddcf;
+}
+
+/* Capa */
+.cover-sheet .front {
+  background: #5d4037;
+  border: 2px solid #3e2723;
+  border-radius: 0 15px 15px 0;
+}
+
+.cover-border {
+  border: 3px double #f1c40f;
+  padding: 20px;
+  width: 80%;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.cover-sheet h1 {
+  font-family: 'Cinzel Decorative', cursive;
+  font-size: 4rem;
+  color: #f1c40f;
+  text-shadow: 2px 2px 4px #000;
+  margin: 0;
+}
+
+.cover-sheet .decoration {
+  font-size: 5rem;
+  color: #f1c40f;
+  margin: 30px 0;
+}
+
+.cover-sheet p {
+  color: #f1c40f;
+  font-size: 2rem;
+}
+
+/* Conteúdo das Páginas */
+.page-border {
+  width: 85%;
+  height: 85%;
+  border: 2px solid #8e44ad;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-image: url('https://www.transparenttextures.com/patterns/aged-paper.png');
+  position: relative;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.page-text {
+  font-family: 'MedievalSharp', cursive;
+  font-size: 1.5rem;
+  line-height: 1.6;
+  color: #2c3e50;
+  text-align: justify;
+  margin: 0;
+}
+
+.page-text::first-letter {
+  font-family: 'Cinzel Decorative', cursive;
+  font-size: 4rem;
+  float: left;
+  margin-right: 15px;
+  line-height: 0.8;
+  color: #8e44ad;
+}
+
+.page-number {
+  position: absolute;
+  bottom: 20px;
+  font-size: 1.2rem;
+  color: #7f8c8d;
+}
+
+.image-page {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+}
+
+.image-page canvas {
+  max-width: 90%;
+  max-height: 90%;
+  border: 5px solid #5d4037;
+  border-radius: 5px;
+  box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+  background-color: #fff;
+}
+
+/* Página Estática (Base Direita) */
+.static-page {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: #f4e4bc;
+  border-radius: 0 15px 15px 0;
+  box-shadow: inset 0 0 30px rgba(0,0,0,0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 0;
+}
+
+.end-page h2 {
+  font-family: 'Cinzel Decorative', cursive;
+  color: #2c3e50;
+  font-size: 2rem;
+}
