@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import './App.css';
 import Book from './Book';
 
@@ -35,9 +35,9 @@ function App() {
 
   const totalSlides = slides.length;
 
-  const moveSlide = (direction: number) => {
+  const moveSlide = useCallback((direction: number) => {
     setCurrentSlide((prev) => (prev + direction + totalSlides) % totalSlides);
-  };
+  }, [totalSlides]);
 
   // Auto play carousel
   useEffect(() => {
@@ -46,7 +46,7 @@ function App() {
       moveSlide(1);
     }, 3000);
     return () => clearInterval(interval);
-  }, [showBook]);
+  }, [showBook, moveSlide]);
 
   // Generate Floating Hearts
   useEffect(() => {

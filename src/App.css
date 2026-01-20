@@ -224,6 +224,7 @@ p {
   width: 40vw;
   height: 80vh;
   animation: floatBook 6s ease-in-out infinite;
+  transform-style: preserve-3d; /* Adicionado para garantir que o 3D funcione corretamente */
 }
 
 @keyframes floatBook {
